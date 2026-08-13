@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>ケミカラ！ 〜無機化学 色マスター〜</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="bg-stars"></div>
+
+  <!-- ===== タイトル画面 ===== -->
+  <div id="screen-title" class="screen active">
+    <div class="title-wrap">
+      <div class="title-logo">
+        <span class="t1">ケミ</span><span class="t2">カラ</span><span class="t3">！</span>
+      </div>
+      <div class="title-sub">〜 無機化学 色マスター 〜</div>
+      <div class="title-desc">正しい色のオーブを撃ち抜け！<br>コンボを繋いでフィーバー突入だ🔥</div>
+
+      <div class="cat-select">
+        <div class="cat-select-label">出題カテゴリ（タップで ON/OFF）</div>
+        <div id="cat-buttons"></div>
+      </div>
+
+      <button id="btn-start" class="big-btn pulse">▶ ゲームスタート</button>
+      <button id="btn-zukan" class="mid-btn">📖 色図鑑（全リスト）</button>
+      <div class="hiscore-line">🏆 ハイスコア: <span id="title-hiscore">0</span></div>
+    </div>
+  </div>
+
+  <!-- ===== ゲーム画面 ===== -->
+  <div id="screen-game" class="screen">
+    <div id="hud">
+      <div class="hud-left">
+        <div id="hud-score">0</div>
+        <div id="hud-combo" class="hidden">0 COMBO</div>
+      </div>
+      <div class="hud-right">
+        <div id="hud-lives"></div>
+        <div id="hud-timerbar"><div id="hud-timerfill"></div></div>
+      </div>
+    </div>
+    <div id="question-panel">
+      <div id="q-cat"></div>
+      <div id="q-text"></div>
+      <div id="q-sub"></div>
+    </div>
+    <canvas id="game-canvas"></canvas>
+    <div id="fever-banner" class="hidden">🔥 FEVER TIME 🔥</div>
+    <div id="feedback-layer"></div>
+  </div>
+
+  <!-- ===== リザルト画面 ===== -->
+  <div id="screen-result" class="screen">
+    <div class="result-wrap">
+      <div class="result-title">RESULT</div>
+      <div class="result-score-label">SCORE</div>
+      <div id="result-score">0</div>
+      <div id="result-newrecord" class="hidden">✨ NEW RECORD!! ✨</div>
+      <div class="result-stats">
+        <div>✅ 正解: <span id="result-correct">0</span></div>
+        <div>❌ ミス: <span id="result-miss">0</span></div>
+        <div>🔥 最大コンボ: <span id="result-maxcombo">0</span></div>
+        <div>🎯 正答率: <span id="result-rate">0%</span></div>
+      </div>
+      <div id="result-review"></div>
+      <button id="btn-retry" class="big-btn">🔁 もう一回！</button>
+      <button id="btn-to-title" class="mid-btn">🏠 タイトルへ</button>
+    </div>
+  </div>
+
+  <!-- ===== 図鑑画面 ===== -->
+  <div id="screen-zukan" class="screen">
+    <div class="zukan-wrap">
+      <div class="zukan-header">
+        <button id="btn-zukan-back" class="mid-btn">← 戻る</button>
+        <div class="zukan-title">📖 無機化学 色図鑑 <span id="zukan-count"></span></div>
+      </div>
+      <div id="zukan-list"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
