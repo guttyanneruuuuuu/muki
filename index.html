@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>ケミカラ！ 〜無機化学 色マスター〜</title>
+<title>ケミカラ！ 〜無機化学 完全マスター〜</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -16,12 +16,14 @@
       <div class="title-logo">
         <span class="t1">ケミ</span><span class="t2">カラ</span><span class="t3">！</span>
       </div>
-      <div class="title-sub">〜 無機化学 色マスター 〜</div>
-      <div class="title-desc">正しい色のオーブを撃ち抜け！<br>コンボを繋いでフィーバー突入だ🔥</div>
+      <div class="title-sub">〜 無機化学 完全マスター 〜</div>
+      <div class="title-desc">色オーブを撃ち抜き、知識クイズを撃破せよ！<br>コンボを繋いでフィーバー＆レベルアップだ🔥</div>
 
       <div class="cat-select">
-        <div class="cat-select-label">出題カテゴリ（タップで ON/OFF）</div>
-        <div id="cat-buttons"></div>
+        <div class="cat-select-label">🎨 色を覚える（タップで ON/OFF）</div>
+        <div id="cat-buttons-color" class="cat-btn-row"></div>
+        <div class="cat-select-label" style="margin-top:10px">🧠 知識を鍛える</div>
+        <div id="cat-buttons-quiz" class="cat-btn-row"></div>
       </div>
 
       <button id="btn-start" class="big-btn pulse">▶ ゲームスタート</button>
@@ -36,10 +38,12 @@
       <div class="hud-left">
         <div id="hud-score">0</div>
         <div id="hud-combo" class="hidden">0 COMBO</div>
+        <div id="hud-level">Lv.1 ×1.0</div>
       </div>
       <div class="hud-right">
         <div id="hud-lives"></div>
         <div id="hud-timerbar"><div id="hud-timerfill"></div></div>
+        <div id="hud-fevergauge"><div id="hud-feverfill"></div></div>
       </div>
     </div>
     <div id="question-panel">
@@ -47,8 +51,13 @@
       <div id="q-text"></div>
       <div id="q-sub"></div>
     </div>
-    <canvas id="game-canvas"></canvas>
+    <div id="game-stage">
+      <canvas id="game-canvas"></canvas>
+      <div id="quiz-choices" class="hidden"></div>
+    </div>
     <div id="fever-banner" class="hidden">🔥 FEVER TIME 🔥</div>
+    <div id="levelup-banner" class="hidden">⚡ LEVEL UP! ⚡</div>
+    <div id="judge-banner" class="hidden"></div>
     <div id="feedback-layer"></div>
   </div>
 
@@ -56,6 +65,7 @@
   <div id="screen-result" class="screen">
     <div class="result-wrap">
       <div class="result-title">RESULT</div>
+      <div id="result-rank"></div>
       <div class="result-score-label">SCORE</div>
       <div id="result-score">0</div>
       <div id="result-newrecord" class="hidden">✨ NEW RECORD!! ✨</div>
@@ -76,7 +86,7 @@
     <div class="zukan-wrap">
       <div class="zukan-header">
         <button id="btn-zukan-back" class="mid-btn">← 戻る</button>
-        <div class="zukan-title">📖 無機化学 色図鑑 <span id="zukan-count"></span></div>
+        <div class="zukan-title">📖 無機化学 完全図鑑 <span id="zukan-count"></span></div>
       </div>
       <div id="zukan-list"></div>
     </div>
